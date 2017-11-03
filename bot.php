@@ -109,7 +109,7 @@ if (!is_null($events['events'])) {
 					 ];
           break;
           case 'โรงพยาบาล': 
-            $url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=3000&type=hospital&key=AIzaSyAe1BnFRgF3ufAtZqsz-8wrMzJ9X7T1rfM";
+            $url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=2000&type=hospital&key=AIzaSyAe1BnFRgF3ufAtZqsz-8wrMzJ9X7T1rfM";
             $curl_handle = curl_init();
             curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt( $curl_handle, CURLOPT_URL, $url );
