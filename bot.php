@@ -57,7 +57,7 @@ if (!is_null($events['events'])) {
             $text = curl_exec( $curl_handle );
             curl_close( $curl_handle ); 
             $obj = json_decode($text, TRUE);
-            for ($x = 0; $x <= 10; $x++) {
+            for ($x = 0; $x <= 5; $x++) {
                $mes = $obj['results'][$x]['place_id']; 
                $url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=$mes&key=AIzaSyAe1BnFRgF3ufAtZqsz-8wrMzJ9X7T1rfM";
                $curl_handle = curl_init();
@@ -108,8 +108,8 @@ if (!is_null($events['events'])) {
 							     'text' => "$addname"
 					 ];
           break;
-          case 'สปา': 
-            $url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=500&type=spa&key=AIzaSyAe1BnFRgF3ufAtZqsz-8wrMzJ9X7T1rfM";
+          case 'โรงพยาบาล': 
+            $url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=500&type=hospital&key=AIzaSyAe1BnFRgF3ufAtZqsz-8wrMzJ9X7T1rfM";
             $curl_handle = curl_init();
             curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt( $curl_handle, CURLOPT_URL, $url );
