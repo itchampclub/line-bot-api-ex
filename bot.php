@@ -3,54 +3,6 @@
 
 $access_token = 'OGQmM70UyBouqcPvHkkMROOSSMw+PUmFHmOs782sOozvah49r85WnwCPL1D075fiTv8NtDsPUaE2mzUVQYuwtO31WMCgk7VS8U32JGF8wIz99zm/nC9znoBfnrIu/jt14s6VHFbsLsJWHElUaFtsQgdB04t89/1O/w1cDnyilFU=';
 
-namespace LINE\LINEBot\MessageBuilder\TemplateBuilder;
-use LINE\LINEBot\Constant\TemplateType;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder;
-/**
- * A builder class for carousel template.
- *
- * @package LINE\LINEBot\MessageBuilder\TemplateBuilder
- */
-class CarouselTemplateBuilder implements TemplateBuilder
-{
-    /** @var CarouselColumnTemplateBuilder[] */
-    private $columnTemplateBuilders;
-    /** @var array */
-    private $template;
-    /**
-     * CarouselTemplateBuilder constructor.
-     *
-     * @param CarouselColumnTemplateBuilder[] $columnTemplateBuilders
-     */
-    public function __construct(array $columnTemplateBuilders)
-    {
-        $this->columnTemplateBuilders = $columnTemplateBuilders;
-    }
-    /**
-     * Builds carousel template structure.
-     *
-     * @return array
-     */
-    public function buildTemplate()
-    {
-        if (!empty($this->template)) {
-            return $this->template;
-        }
-
-        $columns = [];
-        foreach ($this->columnTemplateBuilders as $columnTemplateBuilder) {
-            $columns[] = $columnTemplateBuilder->buildTemplate();
-        }
-
-        $this->template = [
-            'type' => TemplateType::CAROUSEL,
-            'columns' => $columns,
-        ];
-
-        return $this->template;
-    }
-}
-
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -476,7 +428,7 @@ if (!is_null($events['events'])) {
 				'messages' => [$messages]
 			];
 		}
-		$post = json_encode($data,$this);
+		$post = json_encode($data);
 		$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
