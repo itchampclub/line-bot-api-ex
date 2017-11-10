@@ -183,6 +183,7 @@ if (!is_null($events['events'])) {
 					$text = curl_exec( $curl_handle );
 					curl_close( $curl_handle ); 
 					$obj = json_decode($text, TRUE);
+					$name_ar = array();
 					for ($x = 0; $x <= 5; $x++) {
 						$mes = $obj['results'][$x]['place_id']; 
 						$url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=$mes&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
@@ -196,12 +197,13 @@ if (!is_null($events['events'])) {
 						$name = $object['result']['name']; 
 						$number = $object['result']['formatted_phone_number'];
 						$address = $object['result']['formatted_address'];
-						$addname .= "->>".$name."\n".$number."\n".$address."\n\n";
+						//$addname .= "->>".$name."\n".$number."\n".$address."\n\n";
+						array_push($name_ar,$name);
 					}            
 				    // Build message to reply back
 					$messages = [
 						'type' => 'text',
-						'text' => "$addname"
+						'text' => "$name_ar"
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
