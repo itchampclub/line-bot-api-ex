@@ -183,7 +183,7 @@ if (!is_null($events['events'])) {
 					$text = curl_exec( $curl_handle );
 					curl_close( $curl_handle ); 
 					$obj = json_decode($text, TRUE);
-					$name_ar = array();
+					//$name_ar = array();
 					for ($x = 0; $x <= 5; $x++) {
 						$mes = $obj['results'][$x]['place_id']; 
 						$url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=$mes&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
@@ -194,6 +194,7 @@ if (!is_null($events['events'])) {
 						$text = curl_exec( $curl_handle );
 						curl_close( $curl_handle ); 
 						$object = json_decode($text, TRUE);
+						$name_ar = array();
 						$name = $object['result']['name']; 
 						$number = $object['result']['formatted_phone_number'];
 						$address = $object['result']['formatted_address'];
