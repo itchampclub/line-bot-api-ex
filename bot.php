@@ -156,24 +156,20 @@ if (!is_null($events['events'])) {
 					];
 					break;
 				
-				case 'ทำอะไรดี' :
-					$messages = [
-						'type' => 'text',
-						'text' => 'ไปไหว้พระกันมั้ย'
-					];
+				case 'เงินหมด' :
 					$mess = [
 						'type' => 'text',
-						'text' => 'ลองค้นหาวัดใกล้ๆ'
+						'text' => 'ลองค้นหาตู้ATMใกล้ๆ'
 					];
 					$me = [
 						'type' => 'text',
-						'text' => 'โดยพิมพ์คำว่า วัด ดูสิ'
+						'text' => 'โดยพิมพ์คำว่า ATM ดูสิ'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
 					$data = [
 						'replyToken' => $replyToken,
-						'messages' => [$messages, $mess, $me]
+						'messages' => [$mess, $me]
 					];
 					break;
 					
