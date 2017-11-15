@@ -177,8 +177,8 @@ if (!is_null($events['events'])) {
 					];
 					break;
 					
-				case 'ร้านอาหาร': 
-					$url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=500&type=restaurant&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
+				case 'ป้ายรถประจำทาง': 
+					$url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=500&type=bus_station&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
 					$curl_handle = curl_init();
 					curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
 					curl_setopt( $curl_handle, CURLOPT_URL, $url );
@@ -190,7 +190,7 @@ if (!is_null($events['events'])) {
 					$number = array();
 					$address = array();
 					$urll = array();
-					for ($x = 0; $x <ช 5; $x++) {
+					for ($x = 0; $x <= 5; $x++) {
 						$mes = $obj['results'][$x]['place_id']; 
 						$url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=$mes&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
 						$curl_handle = curl_init();
@@ -294,8 +294,8 @@ if (!is_null($events['events'])) {
 				    	];
 					break;
 				
-				case 'ร้านค้า': 
-					$url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=1500&type=grocery_or_supermarket&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
+				case 'สถานีรถไฟฟ้า': 
+					$url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=1500&type=subway_station&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
 					$curl_handle = curl_init();
 					curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
 					curl_setopt( $curl_handle, CURLOPT_URL, $url );
