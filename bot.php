@@ -120,7 +120,7 @@ if (!is_null($events['events'])) {
 					];
 					$me = [
 						'type' => 'text',
-						'text' => 'ถ้าไม่มีลองหาที่ซื้อร่ม โดยพิมพ์คำว่า ห้างสรรพสินค้า ดูสิ'
+						'text' => 'ถ้าไม่มีลองหาที่ซื้อร่ม โดยพิมพ์คำว่า ร้านค้า ดูสิ'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
