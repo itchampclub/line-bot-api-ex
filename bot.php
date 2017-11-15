@@ -197,7 +197,7 @@ if (!is_null($events['events'])) {
 						$name_ar = array();
 						$name = $object['result']['name']; 
 						$number = $object['result']['formatted_phone_number'];
-						$address = $object['result']['formatted_address'];
+						$address = $object['result']['vicinity'];
 						//$addname .= "->>".$name."\n".$number."\n".$address."\n\n";
 						array_push($name_ar,$name);
 					}            
@@ -235,7 +235,7 @@ if (!is_null($events['events'])) {
 						$object = json_decode($text, TRUE);
 						$name = $object['result']['name']; 
 						$number = $object['result']['formatted_phone_number'];
-						$address = $object['result']['formatted_address'];
+						$address = $object['result']['vicinity'];
 						$addname .= "->>".$name."\n".$number."\n".$address."\n\n";
 					}            
 				    // Build message to reply back
@@ -272,7 +272,7 @@ if (!is_null($events['events'])) {
 						$object = json_decode($text, TRUE);
 						$name = $object['result']['name']; 
 						$number = $object['result']['formatted_phone_number'];
-						$address = $object['result']['formatted_address'];
+						$address = $object['result']['vicinity'];
 						$addname .= "->>".$name."\n".$number."\n".$address."\n\n";
 					}            
 				    // Build message to reply back
@@ -309,7 +309,7 @@ if (!is_null($events['events'])) {
 						$object = json_decode($text, TRUE);
 						$name = $object['result']['name']; 
 						$number = $object['result']['formatted_phone_number'];
-						$address = $object['result']['formatted_address'];
+						$address = $object['result']['vicinity'];
 						$addname .= "->>".$name."\n".$number."\n".$address."\n\n";
 					}            
 				    // Build message to reply back
@@ -346,7 +346,7 @@ if (!is_null($events['events'])) {
 						$object = json_decode($text, TRUE);
 						$name = $object['result']['name']; 
 						$number = $object['result']['formatted_phone_number'];
-						$address = $object['result']['formatted_address'];
+						$address = $object['result']['vicinity'];
 						$addname .= "->>".$name."\n".$number."\n".$address."\n\n";
 					}            
 				    // Build message to reply back
@@ -383,7 +383,7 @@ if (!is_null($events['events'])) {
 						$object = json_decode($text, TRUE);
 						$name = $object['result']['name']; 
 						$number = $object['result']['formatted_phone_number'];
-						$address = $object['result']['formatted_address'];
+						$address = $object['result']['vicinity'];
 						$addname .= "->>".$name."\n".$number."\n".$address."\n\n";
 					}            
 				    // Build message to reply back
