@@ -288,7 +288,7 @@ if (!is_null($events['events'])) {
 				    	];	   
 					break;
 					
-				case 'ป้ายรถเมล์': 
+				case 'ป้ายรถประจำทาง': 
 					$url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=2000&type=bus_station&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
 					$curl_handle = curl_init();
 					curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
