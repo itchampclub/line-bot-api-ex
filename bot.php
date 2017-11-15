@@ -288,8 +288,8 @@ if (!is_null($events['events'])) {
 				    	];	   
 					break;
 					
-				case 'bank': 
-					$url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=2000&type=bank&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
+				case 'ATM': 
+					$url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=2000&type=meal_delivery&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
 					$curl_handle = curl_init();
 					curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
 					curl_setopt( $curl_handle, CURLOPT_URL, $url );
