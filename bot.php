@@ -85,7 +85,7 @@ if (!is_null($events['events'])) {
 					];
 					$mess = [
 						'type' => 'text',
-						'text' => 'โดยพิมพ์คำว่า ร้านอาหาร ดูนะ'
+						'text' => 'โดยพิมพ์คำว่า ร้านอาหาร หรือกดที่ รูปร้านอาหาร ก็ได้นะ'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
