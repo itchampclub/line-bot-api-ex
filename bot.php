@@ -23,53 +23,52 @@ if (!is_null($events['events'])) {
 
 			// Build message to reply back
 			switch ($text) {
-				case 'หวัดดี' :
-					$messages = [
+				case 'สวัสดี' :
+					$messages_1 = [
 						'type' => 'text',
-						'text' => 'ดีจ้า'
+						'text' => 'สวัสดี เราชื่อ บอทเวย์'
+					];
+					$messages_2 = [
+						'type' => 'text',
+						'text' => 'เราช่วยคุณค้นหาสถานที่รอบตัวคุณได้นะ'
+					];
+					$messages_3 = [
+						'type' => 'text',
+						'text' => 'ลองพิมพ์คำว่า ช่วยเหลือ ดูสิ'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
 					$data = [
 						'replyToken' => $replyToken,
-						'messages' => [$messages]
+						'messages' => [$messages_1 , $messages_2 , $messages_3]
 					];
 					break;
 					
-				case 'สบายดีมั้ย' :
+				case 'Hello' :
 					$messages = [
 						'type' => 'text',
-						'text' => 'สบายดี'
-					];
-					// Make a POST Request to Messaging API to reply to sender
-					$url = 'https://api.line.me/v2/bot/message/reply';
-					$data = [
-						'replyToken' => $replyToken,
-						'messages' => [$messages]
-					];
-					break;
-									
-				case 'วันนี้' :
-					$messages = [
-						'type' => 'text',
-						'text' => 'วันดีปีใหม่'
+						'text' => 'Hello, I am BotWay.'
 					];
 					$mess = [
 						'type' => 'text',
-						'text' => 'อย่าลืมไปลอยกระทงนะ'
+						'text' => 'I can help you find places around you.'
+					];
+					$me = [
+						'type' => 'text',
+						'text' => 'You can try typing Help.'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
 					$data = [
 						'replyToken' => $replyToken,
-						'messages' => [$messages, $mess]
+						'messages' => [$messages, $mess , $me]
 					];
 					break;
 									
 				case 'อากาศดี' :
 					$messages = [
 						'type' => 'text',
-						'text' => 'เหมาะแก่การนอนมากๆเลย ~'
+						'text' => 'เหมาะแก่การไปท่องเที่ยวจริงๆเลย'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
@@ -95,11 +94,41 @@ if (!is_null($events['events'])) {
 						'messages' => [$messages, $mess]					
 					];
 					break;
-				
-				case 'น่ารัก' :
+					
+				case 'Hungry' :
 					$messages = [
 						'type' => 'text',
-						'text' => 'ขอบคุณที่ชมค้าบบบ'
+						'text' => 'Try to find a nice restaurant.'
+					];
+					$mess = [
+						'type' => 'text',
+						'text' => 'By typing the word ร้านอาหาร or clicking the restaurant icon.'
+					];
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages, $mess]					
+					];
+					break;
+				
+				case 'ไม่สบาย' :
+					$messages = [
+						'type' => 'text',
+						'text' => 'ค้นหาโรงพยาบาลใกล้ๆดูสิ'
+					];
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages]
+					];
+					break;
+					
+				case 'Sick' :
+					$messages = [
+						'type' => 'text',
+						'text' => 'Find a hospital near you.'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
@@ -120,7 +149,53 @@ if (!is_null($events['events'])) {
 					];
 					$me = [
 						'type' => 'text',
-						'text' => 'ถ้าไม่มีลองหาที่ซื้อร่ม โดยพิมพ์คำว่า ร้านค้า ดูสิ'
+						'text' => 'ถ้าไม่มีลองหาที่ซื้อร่ม โดยค้นหา ร้านค้า ดูสิ'
+					];
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages, $mess, $me]
+					];
+					break;
+					
+				case 'ช่วยเหลือ' :
+					$messages = [
+						'type' => 'text',
+						'text' => 'คุณสามารถค้นหาสถานที่ต่างๆ โดยกดที่เมนู ค้นหาสถานที่ ที่แถบด้านล่าง'
+					];
+					$mess = [
+						'type' => 'text',
+						'text' => 'เป็นการค้นหาสถานที่ต่างๆรอบตัวคุณ แค่นี้ก็หมดปัญหาหลงทางหรือไม่คุ้นเคยกับสถานที่ได้แล้ว'
+					];
+					$me = [
+						'type' => 'text',
+						'text' => 'คุณสามารถสนทนากับบอทโดยคำพูดดังต่อไปนี้'
+					];
+					$me_1 = [
+						'type' => 'text',
+						'text' => 'สวัสดี , อากาศดี , หิวข้าว , ไม่สบาย , ฝนจะตกมั้ย , แนะนำเพลง , เงินหมด'
+					];
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages, $mess, $me , $me_1]
+					];
+					break;
+					
+				case 'Help' :
+					$messages = [
+						'type' => 'text',
+						'text' => 'You can search for places by clicking on the search menu at the bottom bar.'
+					];
+					$mess = [
+						'type' => 'text',
+						'text' => 'You can chat with the bot by typing the following.'
+					];
+					$me = [
+						'type' => 'text',
+						'text' => 'Hello , Hungry , Sick'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
@@ -130,20 +205,7 @@ if (!is_null($events['events'])) {
 					];
 					break;
 				
-				case 'บอทชื่ออะไร' :
-					$messages = [
-						'type' => 'text',
-						'text' => 'เราชื่อ บอทเวย์'
-					];
-					// Make a POST Request to Messaging API to reply to sender
-					$url = 'https://api.line.me/v2/bot/message/reply';
-					$data = [
-						'replyToken' => $replyToken,
-						'messages' => [$messages]
-					];
-					break;
-				
-				case 'แนะนำเพลงหน่อย' :
+				case 'แนะนำเพลง' :
 					$messages = [
 						'type' => 'text',
 						'text' => 'ฉันแพ้ทางคนอย่างเธอ ~'
@@ -163,7 +225,7 @@ if (!is_null($events['events'])) {
 					];
 					$me = [
 						'type' => 'text',
-						'text' => 'โดยพิมพ์คำว่า ATM ดูสิ'
+						'text' => 'โดยพิมพ์ค้นหา ATM ดูสิ'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
