@@ -3,7 +3,8 @@
 
 $access_token = '8LSoXWYVTlV7oV82tKW6Rw9YdFLm/kcM4FzC2LACY+zpCP00zb012tMeG/NakCYCDP/y9aYS5nyZpW9vmFqihBSlQu0wn+fM9Z86qz9atTM6+KFcIZgPglsuGOfMGRaSGZ+Ur9r1DipRHh31MvR/3wdB04t89/1O/w1cDnyilFU=';
 
-$content = file_get_contents('php://input');
+
+		$content = file_get_contents('php://input');
 $jsonString = file_get_contents('php://input');
 error_log($jsonString);
 // Parse JSON
@@ -20,53 +21,52 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			// Build message to reply back
 			switch ($text) {
-				case 'หวัดดี' :
-					$messages = [
+				case 'สวัสดี' :
+					$messages_1 = [
 						'type' => 'text',
-						'text' => 'ดีจ้า'
+						'text' => 'สวัสดี เราชื่อ บอทเวย์'
+					];
+					$messages_2 = [
+						'type' => 'text',
+						'text' => 'เราช่วยคุณค้นหาสถานที่รอบตัวคุณได้นะ'
+					];
+					$messages_3 = [
+						'type' => 'text',
+						'text' => 'ลองพิมพ์คำว่า ช่วยเหลือ ดูสิ'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
 					$data = [
 						'replyToken' => $replyToken,
-						'messages' => [$messages]
+						'messages' => [$messages_1 , $messages_2 , $messages_3]
 					];
 					break;
 					
-				case 'สบายดีมั้ย' :
+				case 'Hello' :
 					$messages = [
 						'type' => 'text',
-						'text' => 'สบายดี'
-					];
-					// Make a POST Request to Messaging API to reply to sender
-					$url = 'https://api.line.me/v2/bot/message/reply';
-					$data = [
-						'replyToken' => $replyToken,
-						'messages' => [$messages]
-					];
-					break;
-									
-				case 'วันนี้' :
-					$messages = [
-						'type' => 'text',
-						'text' => 'วันดีปีใหม่'
+						'text' => 'Hello, I am BotWay.'
 					];
 					$mess = [
 						'type' => 'text',
-						'text' => 'อย่าลืมไปลอยกระทงนะ'
+						'text' => 'I can help you find places around you.'
+					];
+					$me = [
+						'type' => 'text',
+						'text' => 'You can try typing Help.'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
 					$data = [
 						'replyToken' => $replyToken,
-						'messages' => [$messages, $mess]
+						'messages' => [$messages, $mess , $me]
 					];
 					break;
 									
 				case 'อากาศดี' :
 					$messages = [
 						'type' => 'text',
-						'text' => 'เหมาะแก่การนอนมากๆเลย ~'
+						'text' => 'เหมาะแก่การไปท่องเที่ยวจริงๆเลย'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
@@ -83,7 +83,24 @@ if (!is_null($events['events'])) {
 					];
 					$mess = [
 						'type' => 'text',
-						'text' => 'โดยพิมพ์คำว่า ร้านอาหาร ดูนะ'
+						'text' => 'โดยพิมพ์คำว่า ร้านอาหาร หรือกดที่ รูปร้านอาหาร ก็ได้นะ'
+					];
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages, $mess]					
+					];
+					break;
+					
+				case 'Hungry' :
+					$messages = [
+						'type' => 'text',
+						'text' => 'Try to find a nice restaurant.'
+					];
+					$mess = [
+						'type' => 'text',
+						'text' => 'By typing the word ร้านอาหาร or clicking the restaurant icon.'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
@@ -93,10 +110,23 @@ if (!is_null($events['events'])) {
 					];
 					break;
 				
-				case 'น่ารัก' :
+				case 'ไม่สบาย' :
 					$messages = [
 						'type' => 'text',
-						'text' => 'ขอบคุณที่ชมค้าบบบ'
+						'text' => 'ค้นหาโรงพยาบาลใกล้ๆดูสิ'
+					];
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages]
+					];
+					break;
+					
+				case 'Sick' :
+					$messages = [
+						'type' => 'text',
+						'text' => 'Find a hospital near you.'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
@@ -117,7 +147,53 @@ if (!is_null($events['events'])) {
 					];
 					$me = [
 						'type' => 'text',
-						'text' => 'ถ้าไม่มีลองหาที่ซื้อร่ม โดยพิมพ์คำว่า ห้างสรรพสินค้า ดูสิ'
+						'text' => 'ถ้าไม่มีลองหาที่ซื้อร่ม โดยค้นหา ร้านค้า ดูสิ'
+					];
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages, $mess, $me]
+					];
+					break;
+					
+				case 'ช่วยเหลือ' :
+					$messages = [
+						'type' => 'text',
+						'text' => 'คุณสามารถค้นหาสถานที่ต่างๆ โดยกดที่เมนู ค้นหาสถานที่ ที่แถบด้านล่าง'
+					];
+					$mess = [
+						'type' => 'text',
+						'text' => 'เป็นการค้นหาสถานที่ต่างๆรอบตัวคุณ แค่นี้ก็หมดปัญหาหลงทางหรือไม่คุ้นเคยกับสถานที่ได้แล้ว'
+					];
+					$me = [
+						'type' => 'text',
+						'text' => 'คุณสามารถสนทนากับบอทโดยคำพูดดังต่อไปนี้'
+					];
+					$me_1 = [
+						'type' => 'text',
+						'text' => 'สวัสดี , อากาศดี , หิวข้าว , ไม่สบาย , ฝนจะตกมั้ย , แนะนำเพลง , เงินหมด'
+					];
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages, $mess, $me , $me_1]
+					];
+					break;
+					
+				case 'Help' :
+					$messages = [
+						'type' => 'text',
+						'text' => 'You can search for places by clicking on the search menu at the bottom bar.'
+					];
+					$mess = [
+						'type' => 'text',
+						'text' => 'You can chat with the bot by typing the following.'
+					];
+					$me = [
+						'type' => 'text',
+						'text' => 'Hello , Hungry , Sick'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
@@ -127,20 +203,7 @@ if (!is_null($events['events'])) {
 					];
 					break;
 				
-				case 'บอทชื่ออะไร' :
-					$messages = [
-						'type' => 'text',
-						'text' => 'เราชื่อ บอทเวย์'
-					];
-					// Make a POST Request to Messaging API to reply to sender
-					$url = 'https://api.line.me/v2/bot/message/reply';
-					$data = [
-						'replyToken' => $replyToken,
-						'messages' => [$messages]
-					];
-					break;
-				
-				case 'แนะนำเพลงหน่อย' :
+				case 'แนะนำเพลง' :
 					$messages = [
 						'type' => 'text',
 						'text' => 'ฉันแพ้ทางคนอย่างเธอ ~'
@@ -153,24 +216,20 @@ if (!is_null($events['events'])) {
 					];
 					break;
 				
-				case 'ทำอะไรดี' :
-					$messages = [
-						'type' => 'text',
-						'text' => 'ไปไหว้พระกันมั้ย'
-					];
+				case 'เงินหมด' :
 					$mess = [
 						'type' => 'text',
-						'text' => 'ลองค้นหาวัดใกล้ๆ'
+						'text' => 'ลองค้นหาตู้ATMใกล้ๆ'
 					];
 					$me = [
 						'type' => 'text',
-						'text' => 'โดยพิมพ์คำว่า วัด ดูสิ'
+						'text' => 'โดยพิมพ์ค้นหา ATM ดูสิ'
 					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/reply';
 					$data = [
 						'replyToken' => $replyToken,
-						'messages' => [$messages, $mess, $me]
+						'messages' => [$mess, $me]
 					];
 					break;
 					
@@ -223,7 +282,7 @@ if (!is_null($events['events'])) {
                                 							'uri' => "$urll[0]"
 										]
 									]
-                    										],[
+                    						],[
                         						'title' => "$name[1]",
                         						'text' => "$address[1]",
                         						'actions' => [
@@ -340,7 +399,7 @@ if (!is_null($events['events'])) {
                                 							'uri' => "$urll[0]"
 										]
 									]
-                    										],[
+                    						],[
                         						'title' => "$name[2]",
                         						'text' => "$address[2]",
                         						'actions' => [
@@ -457,7 +516,7 @@ if (!is_null($events['events'])) {
                                 							'uri' => "$urll[0]"
 										]
 									]
-                    										],[
+                    						],[
                         						'title' => "$name[1]",
                         						'text' => "$address[1]",
                         						'actions' => [
@@ -574,7 +633,7 @@ if (!is_null($events['events'])) {
                                 							'uri' => "$urll[1]"
 										]
 									]
-                    										],[
+                    						],[
                         						'title' => "$name[2]",
                         						'text' => "$address[2]",
                         						'actions' => [
@@ -640,8 +699,82 @@ if (!is_null($events['events'])) {
 						'replyToken' => $replyToken,
 						'messages' => [$messages]
 				    	];	   
-					break;				
+					break;	
 					
+				case 'ปั๊มน้ำมัน': 
+					$url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=2000&type=gas_station&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
+					$curl_handle = curl_init();
+					curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
+					curl_setopt( $curl_handle, CURLOPT_URL, $url );
+					curl_setopt( $curl_handle, CURLOPT_RETURNTRANSFER, true);
+					$text = curl_exec( $curl_handle );
+					curl_close( $curl_handle ); 
+					$obj = json_decode($text, TRUE);
+					for ($x = 0; $x < 5; $x++) {
+						$mes = $obj['results'][$x]['place_id']; 
+						$url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=$mes&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
+						$curl_handle = curl_init();
+						curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
+						curl_setopt( $curl_handle, CURLOPT_URL, $url );
+						curl_setopt( $curl_handle, CURLOPT_RETURNTRANSFER, true);
+						$text = curl_exec( $curl_handle );
+						curl_close( $curl_handle ); 
+						$object = json_decode($text, TRUE);
+						$name = $object['result']['name']; 
+						$urll = $object['result']['url'];
+						$address = $object['result']['vicinity'];
+						$addname .= "->>".$name."\n".$address."\n".$urll."\n\n";
+					}            
+				    // Build message to reply back
+					$messages = [
+						'type' => 'text',
+						'text' => "$addname"
+					];
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages]
+				    	];	   
+					break;
+					
+				case 'ATM': 
+					$url = "https://maps.googleapis.com/maps/api/place/radarsearch/json?language=th&location=13.825699,100.516154&radius=500&type=atm&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
+					$curl_handle = curl_init();
+					curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
+					curl_setopt( $curl_handle, CURLOPT_URL, $url );
+					curl_setopt( $curl_handle, CURLOPT_RETURNTRANSFER, true);
+					$text = curl_exec( $curl_handle );
+					curl_close( $curl_handle ); 
+					$obj = json_decode($text, TRUE);
+					for ($x = 0; $x < 5; $x++) {
+						$mes = $obj['results'][$x]['place_id']; 
+						$url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=$mes&key=AIzaSyBEA0UcZj9m-fYvwGTx0aoITGJxyWLdGm4";
+						$curl_handle = curl_init();
+						curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
+						curl_setopt( $curl_handle, CURLOPT_URL, $url );
+						curl_setopt( $curl_handle, CURLOPT_RETURNTRANSFER, true);
+						$text = curl_exec( $curl_handle );
+						curl_close( $curl_handle ); 
+						$object = json_decode($text, TRUE);
+						$name = $object['result']['name']; 
+						$urll = $object['result']['url'];
+						$address = $object['result']['vicinity'];
+						$addname .= "->>".$name."\n".$address."\n".$urll."\n\n";
+					}            
+				    // Build message to reply back
+					$messages = [
+						'type' => 'text',
+						'text' => "$addname"
+					];
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages]
+				    	];	   
+					break;
+				
 				default :
 					$messages = [
 						'type' => 'text',
