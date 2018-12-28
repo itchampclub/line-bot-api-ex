@@ -1,16 +1,9 @@
 <?php
-
-
 $access_token = '8LSoXWYVTlV7oV82tKW6Rw9YdFLm/kcM4FzC2LACY+zpCP00zb012tMeG/NakCYCDP/y9aYS5nyZpW9vmFqihBSlQu0wn+fM9Z86qz9atTM6+KFcIZgPglsuGOfMGRaSGZ+Ur9r1DipRHh31MvR/3wdB04t89/1O/w1cDnyilFU=';
-
-
 $content = file_get_contents('php://input');
 $jsonString = file_get_contents('php://input');
 error_log($jsonString);
-
 $events = json_decode($content, true);
-
-
 if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
@@ -52,17 +45,32 @@ if (!is_null($events['events'])) {
 			curl_close($ch);	
 	}
 }
+
+if (is_null($events['events'])) {
+	                                $id = 'Ub3ea97c513612d6e3401302f051f81dc';
+
+
 					$messages = [
 						'type' => 'text',
-						'text' => '่ส่งจากบอท'
-					            ];
+						'text' => 'Hello, I am BotWay.'
+					];
+					$mess = [
+						'type' => 'text',
+						'text' => 'I can help you find places around you.'
+					];
+					$me = [
+						'type' => 'text',
+						'text' => 'You can try typing Help.'
+					];
 					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://api.line.me/v2/bot/message/push';
-	                                $id = 'Ub3ea97c513612d6e3401302f051f81dc';
 					$data = [
 						'to' => $id,
-						'messages' => [$messages]
-					        ];
+						'messages' => [$messages, $mess , $me]
+					];
+
+
+
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 			$ch = curl_init($url);
@@ -73,5 +81,5 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 			$result = curl_exec($ch);
 			curl_close($ch);
-
+}
 echo "OK";
